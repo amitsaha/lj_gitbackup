@@ -13,14 +13,14 @@ type Repository struct {
 func getRepo(id int) Repository {
 
 	repos := map[int]Repository{
-		1: Repository{GitURL: "git+ssh://github.com/amitsaha/gitbackup", Name: "gitbackup"},
-		2: Repository{GitURL: "git+ssh://github.com/amitsaha/lj_gitbackup", Name: "lj_gitbackup"},
+		1: Repository{GitURL: "ssh://github.com/amitsaha/gitbackup", Name: "gitbackup"},
+		2: Repository{GitURL: "ssh://github.com/amitsaha/lj_gitbackup", Name: "lj_gitbackup"},
 	}
 
 	return repos[id]
 }
 
-func backUpRepo(r *Repository, wg *sync.WaitGroup) {
+func backUp(r *Repository, wg *sync.WaitGroup) {
 	defer wg.Done()
 	log.Printf("Backing up %s\n", r.Name)
 }
@@ -38,7 +38,7 @@ func main() {
 		if (Repository{}) != r {
 			wg.Add(1)
 			go func(r Repository) {
-				backUpRepo(&r, &wg)
+				backUp(&r, &wg)
 			}(r)
 		}
 	}

@@ -11,8 +11,8 @@ type Repository struct {
 
 func getRepo(id int) Repository {
 	repos := map[int]Repository{
-		1: Repository{GitURL: "git+ssh://github.com/amitsaha/gitbackup", Name: "gitbackup"},
-		2: Repository{GitURL: "git+ssh://github.com/amitsaha/lj_gitbackup", Name: "lj_gitbackup"},
+		1: Repository{GitURL: "ssh://github.com/amitsaha/gitbackup", Name: "gitbackup"},
+		2: Repository{GitURL: "ssh://github.com/amitsaha/lj_gitbackup", Name: "lj_gitbackup"},
 	}
 
 	return repos[id]
